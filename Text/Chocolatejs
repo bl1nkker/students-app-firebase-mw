@@ -1,0 +1,29 @@
+import React from 'react';
+import Post from './Post';
+import {newpostactioncreator, updatenewtext} from './ReducerChocolate';
+
+function Body(props) {
+
+    let newacc = React.createRef()
+
+    let addPost = () => 
+    { props.dispatch(newpostactioncreator())
+    }
+
+    let postChange = () => {
+    let text = newacc.current.value
+    // let action = {type: "UPDATE-NEW-TEXT", text: text}
+    props.dispatch(updatenewtext(text))
+    
+}
+
+return <body>
+<img className="donut" src="https://images.theconversation.com/files/270320/original/file-20190423-15218-9to8i9.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop"/>
+<Post postAtr={props.postAtr} dispatch={props.dispatch} />
+
+<textarea ref={newacc} value={props.newPostText} onChange={postChange}/>
+<button onClick={addPost}>Click me</button>
+</body>
+}
+
+export default Body

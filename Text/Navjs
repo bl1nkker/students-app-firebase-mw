@@ -1,0 +1,14 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+
+function Navig() {
+    return <nav className="ap-nav">
+    <ul >
+      <li><NavLink to="/Body" className="Ul">Chocolate</NavLink></li>
+      <li><NavLink to="/Bis">Bisquits</NavLink></li>
+      <li><NavLink to="/Milk">Milk</NavLink></li>
+    </ul>
+  </nav>
+}
+
+export default Navig

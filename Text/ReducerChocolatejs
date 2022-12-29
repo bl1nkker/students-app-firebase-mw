@@ -1,0 +1,40 @@
+const NEWPOST = 'NEW-POST'; 
+const UPDATE_NEW_TEXT = "UPDATE-NEW-TEXT";
+
+let initChoc =  {
+    postAtr: [
+     {src: "https://www.slashfilm.com/wp/wp-content/images/ava-trailer.jpg",
+        mes: "I love U"},
+    {src:"https://upload.wikimedia.org/wikipedia/en/9/99/Ava_poster.jpeg",
+        mes: "I love myself"},
+    {src: "https://sefon.pro/img/artist_photos/ava-max.jpg",
+        mes:"I love pizza"}],
+        newPostText: "I love chocolate"
+    }
+
+const reducerChocolate = (state = initChoc, action) => {
+
+    switch(action.type){
+        case NEWPOST: 
+        let nov = {
+            src: "https://sefon.pro/img/artist_photos/ava-max.jpg",
+            mes: state.newPostText
+        }
+        state.postAtr.push(nov)
+       state.newPostText = ''
+       return state;
+
+       case UPDATE_NEW_TEXT: 
+       state.newPostText = action.text;
+       return state;
+
+       default: return state;
+
+    }
+        
+}
+
+export const newpostactioncreator = ()=>({type: NEWPOST})
+export const updatenewtext = (text) => ({type: UPDATE_NEW_TEXT, text: text})
+
+export default reducerChocolate

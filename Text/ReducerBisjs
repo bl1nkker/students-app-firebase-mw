@@ -1,0 +1,31 @@
+const NEW_MESSAGE_BODY = "NEW-MESSAGE-BODY";
+const SEND_MESSAGE = "SEND-MESSAGE";
+
+let initBis = {dialognames: [{id: 1, name: "Ara"}, {id:2, name: "Fara"}, {id:3, name: "Ama"}],
+dialogmessages: [{id:1, mes: "Hello"}, {id:2, mes:"Hi"}, {id:3, mes: "I love U"}],
+newmesbody: " "}
+
+const reducerBis = (state=initBis, action) => {
+
+    switch (action.type) {
+        case NEW_MESSAGE_BODY:
+            state.newmesbody = action.body
+            return state;
+
+        case SEND_MESSAGE:
+        let body = state.newmesbody ;
+        state.newmesbody = " "
+        let nov = {id: 4, mes: body}
+        state.dialogmessages.push(nov)
+        return state;
+    
+        default:
+            return state;
+    }
+    
+}
+
+export const sendmessagecreator = () => ({type: SEND_MESSAGE})
+export const updatenewmessage = (body) => ({type: NEW_MESSAGE_BODY, body: body})
+
+export default reducerBis

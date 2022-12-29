@@ -1,0 +1,33 @@
+import React from 'react';
+import {updatenewmessage, sendmessagecreator} from './ReducerBis';
+
+const Bis = (props) => {
+
+    let showdialog = 
+    props.dialogs.map(m => <div>{m.name}</div>)
+
+    let showmessages =
+     props.messages.map(m=> <div>{m.mes}</div>)
+
+    let sendmessage = () => {
+        props.store.dispatch(sendmessagecreator())
+    }
+
+    let onnewmessagechange = (e) => {
+        let body = e.target.value
+        props.store.dispatch(updatenewmessage(body))
+    }
+
+    let newmesbody = props.newmesbody;
+
+    return(
+        <div className='Bis'>
+            <div>{showdialog}</div>
+            <div>{showmessages}</div>
+            <div>
+            <textarea value={newmesbody} onChange={onnewmessagechange} placeholder="Enter mes" />
+            <button onClick={sendmessage}>Click me</button></div>
+        </div>    )
+}
+
+export default Bis

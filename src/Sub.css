@@ -1,0 +1,62 @@
+*{
+    font-family: DejaVu Sans Mono, monospace;
+}
+
+.Subs{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-left: 70px;
+    margin-bottom: 70px;
+    text-shadow: 0px 0px 5px rgb(253, 249, 249);
+    
+}
+
+.cardimg{
+width: 200px;
+height: 120px;
+
+margin: 10px;
+}
+
+.Card{
+    height: 250px;
+    background: radial-gradient(#f7df80, #dd9e37) ;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+    display: grid;
+    grid-template-columns: 1;
+    justify-content: center;
+    justify-items: center;
+    width:220px;
+    border: 2px solid black;
+    border-radius: 5%;
+    font-size: 15px;
+    
+}
+
+.Title{
+    margin-left: 45%;
+}
+
+.but {
+    
+    font-size: 15px;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    
+    border-radius: 3px;
+    background:  white;
+    box-shadow: 0 -3px#f0e7da inset;
+    transition: 0.2s;
+  } 
+
+.but:hover { 
+    font-size: 21px;
+  
+ }
+
+.but:active {
+    
+    border: 3px solid black;
+    
+  }

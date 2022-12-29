@@ -1,0 +1,44 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
+
+// const Atr = (props) => {
+//     return(
+//         <div>
+//         <NavLink to={props.id}><h1>{props.item}</h1></NavLink>
+//         <Route path={props.path}><img src={props.src}/></Route>
+//         </div>
+//     )
+// }
+
+const Milk = (props) => {
+
+    // let atributs = [
+    //     {
+    //         id:"Hi",
+    //         item: "Welcome to my world",
+    //         path: "/Hi",
+    //         src: "https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/jars-spilling-colorful-objects-garry-gay.jpg"
+    //     },
+    //     {
+    //         id:"Love",
+    //         item: "I'm happy to see u",
+    //         path: "/Love",
+    //         src: "https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/lots-of-sweets-garry-gay.jpg"
+    //     }
+    // ]
+
+    let final =
+        props.atributs.map(a => <div><NavLink to={a.id}><h1>{a.item}</h1></NavLink>
+        <Route path={a.path}><img src={a.src}/></Route></div>)
+
+    return (
+        <BrowserRouter>
+        <div className='Milka'> 
+        {final}
+        </div>
+        </BrowserRouter>
+        )
+}
+
+export default Milk

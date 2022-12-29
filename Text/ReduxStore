@@ -1,0 +1,13 @@
+import { combineReducers, createStore } from "redux";
+import reducerBis from './ReducerBis';
+import reducerChocolate from './ReducerChocolate';
+
+
+let redu = combineReducers({
+   pleas: reducerBis,
+ work: reducerChocolate
+})
+
+let store = createStore(redu);
+
+export default store;

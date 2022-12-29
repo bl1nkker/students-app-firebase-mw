@@ -1,0 +1,53 @@
+import reducerChocolate from './ReducerChocolate';
+import reducerBis from './ReducerBis';
+
+let store = {
+    _renderTree(){
+        console.log('aaa')},
+
+        _status: {
+            chocolate: {
+            postAtr: [
+             {src: "https://www.slashfilm.com/wp/wp-content/images/ava-trailer.jpg",
+                mes: "I love U"},
+            {src:"https://upload.wikimedia.org/wikipedia/en/9/99/Ava_poster.jpeg",
+                mes: "I love myself"},
+            {src: "https://sefon.pro/img/artist_photos/ava-max.jpg",
+                mes:"I love pizza"}],
+                newPostText: "I love chocolate"
+            },
+
+            milk:{atributs: [
+                {id:"Hi",
+                item: "Welcome to my world",
+                path: "/Hi",
+                src: "https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/jars-spilling-colorful-objects-garry-gay.jpg"},
+                {id:"Love",
+                item: "I'm happy to see u",
+                path: "/Love",
+                src: "https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/lots-of-sweets-garry-gay.jpg"}]},
+             
+            bis: {dialognames: [{id: 1, name: "Ara"}, {id:2, name: "Fara"}, {id:3, name: "Ama"}],
+            dialogmessages: [{id:1, mes: "Hello"}, {id:2, mes:"Hi"}, {id:3, mes: "I love U"}],
+            newmesbody: " "}
+
+        }, 
+
+        getStatus(){ return this._status},
+
+        subscribe(observer){this._renderTree = observer},
+
+        dispatch(action){
+            this._status.chocolate = reducerChocolate(this._status.chocolate, action)
+            this._status.bis = reducerBis(this._status.bis, action)
+            this._renderTree(this._status)
+
+            
+        }
+
+}
+
+
+window.store = store
+
+export default store;

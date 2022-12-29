@@ -1,0 +1,80 @@
+import './App.css';
+import Body from './Body11';
+import Bis from './Bis';
+import Foot from './Foot';
+import Head from './Head';
+import Navig from './Nav';
+import Milk from './Milk';
+import React from 'react';
+import './Head.css';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+
+function App(props) {
+  
+  return (
+    <Provider>
+    <BrowserRouter>
+    
+    <div className="App">
+      <Head/>
+      <Navig/>
+      <div className='ap-body'>
+        <Route path="/Body" render={() => <Body postAtr={props.status.chocolate.postAtr} dispatch={props.dispatch} newPostText={props.status.chocolate.newPostText} />}/>
+        <Route path="/Bis" render={() => <Bis dialogs={props.status.bis.dialognames} messages={props.status.bis.dialogmessages} store={props.store}/>}/>
+        <Route path="/Milk" render={() => <Milk atributs={props.status.milk.atributs}/>}/>
+      </div>
+      <Foot/>
+    </div>
+    
+    </BrowserRouter>
+    </Provider>
+  );
+}
+
+export default App;
+
+
+import React from 'react';
+import {createStore, createEvent, createEffect} from "effector";
+import firebase from "firebase";
+import "firebase/firestore";
+import "firebase/auth";
+
+export const auth = firebase.auth()
+
+const db = firebase.firestore();
+
+const notes = ()  => [];
+
+const pushDocIntoArray= (arr, obj, noteNumber, id) =>
+arr.push({...obj, noteNumber, id})
+
+const getDocRef = () => {
+    const user = auth.currentUser;
+    return user
+    ? db 
+    .collection("UserData")
+    .doc(user.uid)
+    .collection("notes")
+    : db 
+    .collection("UserData")
+    .doc()
+    .collection("notes");
+}
+
+const getArrFromFirebase = initArr => 
+getDocRef()
+.orderBy("noteNumber", "asc")
+.get()
+.then(snapshot => 
+    snapshot.forEach(doc =>
+    pushDocIntoArray(initArr, doc.data(), doc.data().noteNumber, doc.id)))
+    .then(()=> initArr)
+    .catch(err => console.log(err));
+
+
+export const addNote = createEffect ("add note").use(obj =>
+    getDocRef()
+    .doc)
